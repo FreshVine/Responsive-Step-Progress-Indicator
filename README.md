@@ -20,5 +20,13 @@ There are only 3 colors to make this work. Note that the connecting line, and de
 	  $ProgressComplete: rgb(35, 185, 0);  
 	  $ProgressCurrent: rgb(65, 112, 176);  
   
+## Using it with your SASS  
+It's really simple to drop your existing color definitions inside of here. Simply comment out the definitions in the SCSS file and then add in something similar to the following where the $Color-_val_ is your value.
+  
+	$ProgressBase: $Color-Base;
+	$ProgressComplete: $Color-Green;
+	$ProgressCurrent: $Color-Blue;
+	@import 'interface/ProgressIndicator.scss';		// This holds all stepped progress indicator
+  
 #Licensed under MIT  
 Just use it, if you expand it let us know so we can add more to the repo.
