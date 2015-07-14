@@ -13,13 +13,13 @@ $ProgressCurrent: rgb(65, 112, 176);
 //		</ul>
 
 ul.SteppedProgress {
-	margin-bottom: 30px;
-	overflow: hidden;
 	/*CSS counters to number the steps*/
 	counter-reset: step;
 	margin: auto;
-	text-align: center;
+	overflow: hidden;
+	padding: 0;
 	position: relative;
+	text-align: center;
 	z-index: 1;
 }
 .SteppedProgress li {
