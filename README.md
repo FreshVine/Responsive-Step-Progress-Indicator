@@ -27,6 +27,8 @@ It's really simple to drop your existing color definitions inside of here. Simpl
 	$ProgressComplete: $Color-Green;
 	$ProgressCurrent: $Color-Blue;
 	@import 'interface/ProgressIndicator.scss';		// This holds all stepped progress indicator
+
+	sass style/ProgressIndicator.scss style/ProgressIndicator.css --style compressed  
   
 #Licensed under MIT  
 Just use it, if you expand it let us know so we can add more to the repo.
