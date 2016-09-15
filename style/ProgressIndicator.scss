@@ -138,6 +138,70 @@ ul.SteppedProgress {
 	background: transparentize( $ProgressComplete, .4);
 }
 
+/* -- Vertical Styling -- */
+ul.SteppedProgress.Vertical{
+	display: block;
+}
+.SteppedProgress.Vertical li{
+	flex: none;
+	clear: both;
+	text-align: left;
+	padding: 0;
+	margin-left: 0;
+	min-height: 2.2em;
+}
+
+.SteppedProgress.Vertical li span{
+	white-space: nowrap;
+}
+
+ul.SteppedProgress.Vertical li:before{
+	float: none;
+	display: inline-block;
+	margin-right: 10px;
+    text-align: center;
+	margin-left: 0;
+}
+.SteppedProgress.Vertical li:after {
+	content: '';
+	width: 6px;
+	height: 100%;
+	position: absolute;
+	left: 12px;
+	top: -50%;
+	z-index: -1; /*put it behind the numbers*/
+}
+
+/* - Styling for the putting the step title in a box with an arrow - */
+ul.SteppedProgress.Vertical li.boxed,
+ul.SteppedProgress.Vertical li.current{
+	min-width: 90%;
+}
+ul.SteppedProgress.Vertical li.boxed span,
+ul.SteppedProgress.Vertical li.current span{
+	display: inline;
+	margin-left: 0;
+}
+ul.SteppedProgress.Vertical li.boxed span:after,
+ul.SteppedProgress.Vertical li.current span:after {
+	bottom: auto;
+	left: auto;
+	right: 100%;
+	top: 7px;
+	border-color: rgba(255, 255, 255, 0);	/* Just needs to be some transparent color */
+	border-right-color: lighten( $ProgressBase, 25 );
+	margin: 0;
+}
+ul.SteppedProgress.Vertical li.current span:after {
+	border-right-color: $ProgressCurrent;	/* $Color-FV-Bright-Blue */
+}
+ul.SteppedProgress.Vertical li.complete.boxed span:after {
+	border-color: rgba(255, 255, 255, 0);	/* Just needs to be some transparent color */
+	border-right-color: $ProgressComplete;
+}
+/* - Styling for the putting the step title in a box with an arrow - */
+/* -- End: Vertical Styling -- */
+
 /* -- Style the Progress Steps for narrow/vertical displays -- */
 @media (max-width: $VerticalBreakPoint) {
 	ul.SteppedProgress{
