@@ -1,7 +1,8 @@
 /* -- Stepped Progress Bar -- */
-$ProgressBase: rgb(128, 128, 128);
-$ProgressComplete: rgb(35, 185, 0);
-$ProgressCurrent: rgb(65, 112, 176);
+$ProgressBase: rgb(128, 128, 128);		// Color of the upcoming steps - lightened for the connecting bar
+$ProgressComplete: rgb(35, 185, 0);		// Color of completed steps
+$ProgressCurrent: rgb(65, 112, 176);	// Color of the Current step
+$VerticalBreakPoint: 420px;	// Max Width for When do we switch to veritcal style
 
 //		<ul class="SteppedProgress">
 //			<li class="complete boxed"><span>Step 1</span></li>
@@ -15,6 +16,7 @@ $ProgressCurrent: rgb(65, 112, 176);
 ul.SteppedProgress {
 	/*CSS counters to number the steps*/
 	counter-reset: step;
+	display: flex;
 	margin: auto;
 	overflow: hidden;
 	padding: 0;
@@ -27,8 +29,8 @@ ul.SteppedProgress {
 	color: #404140;
 	line-height: normal;
 	text-transform: uppercase;
+	flex: 1;
 	font-size: 22px;
-	float: left;
 	position: relative;
 	padding: 0 2%;
 }
@@ -39,7 +41,6 @@ ul.SteppedProgress {
 	background: lighten( $ProgressBase, 25 );
 	border: 1px solid lighten( $ProgressBase, 25 );
 	color: $ProgressBase;
-//    color: #FFF;
     display: inline-block;
 	padding: 3px 6px;
 	position: relative;
@@ -98,45 +99,6 @@ ul.SteppedProgress {
 
 
 /* - Styling for the putting the step title in a box with an arrow - */
-
-
-@media (min-width: 768px) {
-	/* one item */
-	.SteppedProgress li:first-child:nth-last-child(1) {
-	    width: 96%;
-	}
-
-	/* two items */
-	.SteppedProgress li:first-child:nth-last-child(2),
-	.SteppedProgress li:first-child:nth-last-child(2) ~ li {
-	    width: 46%;
-	}
-
-	/* three items */
-	.SteppedProgress li:first-child:nth-last-child(3),
-	.SteppedProgress li:first-child:nth-last-child(3) ~ li {
-	    width: 29.3333%;
-	}
-
-	/* four items */
-	.SteppedProgress li:first-child:nth-last-child(4),
-	.SteppedProgress li:first-child:nth-last-child(4) ~ li {
-	    width: 21%;
-	}
-
-	/* five items */
-	.SteppedProgress li:first-child:nth-last-child(5),
-	.SteppedProgress li:first-child:nth-last-child(5) ~ li {
-	    width: 16%;
-	}
-
-	/* six items */
-	.SteppedProgress li:first-child:nth-last-child(6),
-	.SteppedProgress li:first-child:nth-last-child(6) ~ li {
-	    width: 12.66%;
-	}
-}
-
 .SteppedProgress li:before {
 	content: counter(step);
 	counter-increment: step;
@@ -176,10 +138,13 @@ ul.SteppedProgress {
 	background: transparentize( $ProgressComplete, .4);
 }
 
-/* -- Style the Progress Steps for narrow displays -- */
-@media (max-width: 767px) {
+/* -- Style the Progress Steps for narrow/vertical displays -- */
+@media (max-width: $VerticalBreakPoint) {
+	ul.SteppedProgress{
+		display: block;
+	}
 	.SteppedProgress li{
-		float: none;
+		flex: none;
 		clear: both;
 		text-align: left;
 		padding: 0;
